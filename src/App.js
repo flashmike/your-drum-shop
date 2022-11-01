@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+//created by Mike Flash | flashmike.com
+import React from "react";
+import Cart from "./containers/Cart";
+import ProductList from "./containers/ProductList";
 
-function App() {
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Row>
+        <Col lg="8">
+          <ProductList />
+        </Col>
+        <Col xs md="4">
+          <Cart />
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
 export default App;

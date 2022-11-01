@@ -1,17 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+//created by Mike Flash | flashmike.com
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { combineReducers, createStore } from "redux";
+import cartReducer from "./ducks/cart";
+import productsReducer from "./ducks/products";
+import App from "./App";
+import productsData from "./data/products";
+import "bootstrap/dist/css/bootstrap.css";
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
+const rootReducer = combineReducers({
+  cart: cartReducer,
+  products: productsReducer,
+});
+
+let store = createStore(rootReducer, {
+  products: productsData, // initial store values
+});
+
+render(
+  <Provider store={store}>
+    <Navbar />
     <App />
-  </React.StrictMode>
+    <Footer />
+  </Provider>,
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
